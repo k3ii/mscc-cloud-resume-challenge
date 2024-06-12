@@ -4,6 +4,8 @@ on:
  pull_request:
    paths:
    - infra/**
+ issues:
+   types: [opened, edited, reopened, closed]
 
 env:
   AWS_REGION: "us-east-1"
