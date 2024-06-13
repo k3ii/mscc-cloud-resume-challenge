@@ -1,14 +1,11 @@
 name: "Terraform Infrastructure Change Management Pipeline with GitHub Actions"
 
 on:
- push:
-   branches:
-   - main
-   paths:
-   - infra/**
  pull_request:
    paths:
    - infra/**
+ issues:
+   types: [opened, edited, reopened, closed]
 
 env:
   AWS_REGION: "us-east-1"
@@ -21,6 +18,7 @@ jobs:
   permissions:
       id-token: write   # This is required for requesting the JWT
       contents: read   # This is required for actions/checkout
+      issues: write
       pull-requests: write
   defaults:
     run:
