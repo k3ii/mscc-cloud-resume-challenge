@@ -12,7 +12,7 @@ import ResumeFooter from './components/ResumeFooter.vue'
 </script>
 
 <template>
-  <div>
+  <div id="app" class="my-8 mx-24 space-y-4">
     <ResumeHeader />
     <ResumeSummary />
     <ResumeExperience />

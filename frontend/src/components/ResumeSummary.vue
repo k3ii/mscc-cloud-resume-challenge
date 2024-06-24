@@ -1,8 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>
-    <h2 class="text-2xl font-bold">Summary</h2>
+  <div class="space-y-0.5">
+    <h2 class="text-3xl font-bold">Summary</h2>
+    <div class="flex-grow border-b-2 border-gray-500"></div>
     <p>
       Current Site Reliability Engineer at start-up company Kasa. 7+ years experience specializing
       in the backend development, infrastructure automation, and computer hacking/security. Super

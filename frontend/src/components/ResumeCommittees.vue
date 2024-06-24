@@ -2,8 +2,9 @@
 
 <template>
   <div>
-    <h2 class="text-2xl font-bold">Committees</h2>
-    <table class="table-auto">
+    <h2 class="text-3xl font-bold">Committees</h2>
+    <div class="flex-grow border-b-2 border-gray-500"></div>
+    <table class="table-auto border-separate border-spacing-x-3">
       <tbody>
         <tr>
           <td>2016</td>
