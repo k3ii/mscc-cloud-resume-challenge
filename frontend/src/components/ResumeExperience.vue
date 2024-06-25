@@ -3,14 +3,14 @@
 <template>
   <div>
     <h2 class="text-3xl font-bold">Work Experience</h2>
-    <div class="flex-grow border-b-2 border-gray-500"></div>
+    <div class="flex-grow border-b-2 border-gray-500 mb-3"></div>
     <div class="space-y-3">
       <div>
-        <div class="flex justify-between">
+        <div class="flex justify-between flex-col md:flex-row">
           <h3 class="text-xl font-bold">Omnious. Co., Ltd.</h3>
           <p class="italic text-red-600">Seoul, S.Korea</p>
         </div>
-        <div class="flex justify-between">
+        <div class="flex justify-between flex-col md:flex-row mb-2">
           <p class="uppercase">Software Architect</p>
           <p class="text-gray-600 italic">Jun. 2017 - May. 2018</p>
         </div>
@@ -30,11 +30,11 @@
         </ul>
       </div>
       <div>
-        <div class="flex justify-between">
+        <div class="flex justify-between flex-col md:flex-row">
           <h3 class="text-xl font-bold">PLAT Corp.</h3>
           <p class="italic text-red-600">Seoul, S.Korea</p>
         </div>
-        <div class="flex justify-between">
+        <div class="flex justify-between flex-col md:flex-row mb-2">
           <p class="uppercase">Co‑Founder & Software Engineer</p>
           <p class="text-gray-600 italic">Jan. 2016 - Jun. 2017</p>
         </div>

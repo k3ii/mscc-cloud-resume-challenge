@@ -6,18 +6,24 @@
       <h1 class="font-thin">Byungjin</h1>
       <h1 class="font-bold">Park</h1>
     </div>
-    <p class="text-red-600 text-sm">Software Engineer · Security Expert</p>
-    <p class="italic text-gray-600">
+    <p class="text-red-600 text-sm text-center">Software Engineer · Security Expert</p>
+    <p class="italic text-gray-600 text-center">
       42-8, Bangbae-ro 15-gil, Seocho-gu, Seoul, 00681, Rep. of KOREA
     </p>
-    <div class="flex space-x-2">
+    <div class="flex space-x-2 flex-col md:flex-row text-center">
       <p>(+82) 10-1234-5678</p>
+      <span class="hidden md:inline">|</span>
       <p>posquit0.bj@gmail.com</p>
+      <span class="hidden md:inline">|</span>
       <p>www.posquit0.com</p>
+      <span class="hidden md:inline">|</span>
       <p>posquit0</p>
+      <span class="hidden md:inline">|</span>
       <p>posquit0</p>
     </div>
-    <p class="italic text-gray-600">"Be the change that you want to see in the world."</p>
+    <p class="italic text-gray-600 text-center">
+      "Be the change that you want to see in the world."
+    </p>
   </div>
 </template>
 
