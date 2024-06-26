@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useResumeStore } from '@/stores/resume'
+
 import ResumeHeader from './sections/ResumeHeader.vue'
 import ResumeSummary from './sections/ResumeSummary.vue'
 import ResumeExperience from './sections/ResumeExperience.vue'
@@ -9,10 +11,16 @@ import ResumeCommittee from './sections/ResumeCommittees.vue'
 import ResumeEducation from './sections/ResumeEducation.vue'
 import ResumeExtracurricular from './sections/ResumeExtracurricular.vue'
 import ResumeFooter from './sections/ResumeFooter.vue'
+
+const resumeStore = useResumeStore()
 </script>
 
 <template>
-  <div id="app" class="my-8 mx-6 md:mx-24 space-y-4">
+  <div
+    id="app"
+    class="my-8 mx-6 md:mx-24 space-y-4"
+    :style="{ 'font-family': resumeStore.getStyles.fontFamily }"
+  >
     <ResumeHeader />
     <ResumeSummary />
     <ResumeExperience />

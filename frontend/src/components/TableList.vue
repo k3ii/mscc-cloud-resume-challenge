@@ -7,12 +7,18 @@
         <td class="text-left w-1/12">{{ item.date }}</td>
         <td class="text-left font-bold w-3/12">{{ item.title }}</td>
         <td class="text-left w-6/12">{{ item.event }}</td>
-        <td class="text-right italic text-red-600 w-2/12">{{ item.location }}</td>
+        <td class="text-right italic w-2/12" :style="{ color: resumeStore.getStyles.color }">
+          {{ item.location }}
+        </td>
       </tr>
     </tbody>
   </table>
 </template>
 <script setup lang="ts">
+import { useResumeStore } from '@/stores/resume'
+
+const resumeStore = useResumeStore()
+
 defineProps({
   items: Object
 })

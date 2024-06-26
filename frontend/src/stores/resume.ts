@@ -2,6 +2,10 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useResumeStore = defineStore('resume', () => {
+  const styles= ref({ 
+    color: 'rgb(220 38 38)',
+    fontFamily: ''
+  })
   const header = ref({
     firstName: 'Byungjin',
     lastName: 'Park',
@@ -171,6 +175,7 @@ export const useResumeStore = defineStore('resume', () => {
     }
   ])
 
+  const getStyles = computed(() => styles.value)
   const getHeader = computed(() => header.value)
   const getSummary = computed(() => summary.value)
   const getExperience = computed(() => experience.value)
@@ -182,6 +187,7 @@ export const useResumeStore = defineStore('resume', () => {
   const getExtracurricular = computed(() => extracurricular.value)
 
   return {
+    getStyles,
     getHeader,
     getSummary,
     getExperience,

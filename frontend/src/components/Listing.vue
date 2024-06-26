@@ -3,7 +3,9 @@
     <div v-for="item in items">
       <div class="flex justify-between flex-col md:flex-row">
         <h3 class="text-xl font-bold">{{ item.company }}</h3>
-        <p class="italic text-red-600">{{ item.location }}</p>
+        <p class="italic" :style="{ color: resumeStore.getStyles.color }">
+          {{ item.location }}
+        </p>
       </div>
       <div class="flex justify-between flex-col md:flex-row mb-2">
         <p class="uppercase">{{ item.title }}</p>
@@ -21,6 +23,10 @@
   </div>
 </template>
 <script setup lang="ts">
+import { useResumeStore } from '@/stores/resume'
+
+const resumeStore = useResumeStore()
+
 defineProps({
   items: Object
 })
