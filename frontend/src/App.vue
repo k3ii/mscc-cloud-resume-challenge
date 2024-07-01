@@ -18,7 +18,7 @@ const resumeStore = useResumeStore()
 <template>
   <div
     id="app"
-    class="my-8 mx-6 md:mx-24 space-y-4"
+    class="py-8 px-6 md:px-24 space-y-4"
     :style="{ 'font-family': resumeStore.getStyles.fontFamily }"
   >
     <ResumeHeader />

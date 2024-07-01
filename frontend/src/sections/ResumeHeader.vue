@@ -10,7 +10,12 @@ const resumeStore = useResumeStore()
       <h1 class="font-thin">{{ resumeStore.getHeader.firstName }}</h1>
       <h1 class="font-bold">{{ resumeStore.getHeader.lastName }}</h1>
     </div>
-    <p class="text-sm text-center" :style="{ color: resumeStore.getStyles.color }">
+    <p
+      class="text-sm text-center"
+      :style="{
+        color: resumeStore.getStyles.color ? resumeStore.getStyles.color : 'rgb(220 38 38)'
+      }"
+    >
       {{ resumeStore.getHeader.title }}
     </p>
     <p class="italic text-gray-600 text-center">

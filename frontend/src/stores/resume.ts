@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 export const useResumeStore = defineStore('resume', () => {
   const styles= ref({ 
-    color: 'rgb(220 38 38)',
+    color: '',
     fontFamily: ''
   })
   const header = ref({
