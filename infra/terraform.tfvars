@@ -1,1 +1,1 @@
-bucket_name = "mscc_crc_bucket"
+bucket_name = "mscc-crc-bucket-albert-einstein"
