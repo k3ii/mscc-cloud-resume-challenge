@@ -1,11 +1,5 @@
-resource "random_string" "bucket_suffix" {
-  length  = 8
-  special = false
-  upper   = false
-}
-
 resource "aws_s3_bucket" "crc_bucket" {
-  bucket        = "crc-${random_string.bucket_suffix.result}"
+  bucket        = var.bucket_name
   force_destroy = true
 }
 
