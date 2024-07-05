@@ -1,6 +1,6 @@
 locals {
-  s3_origin_id   = "${terraform_remote_state.state.output.bucket_name}-origin"
-  s3_domain_name = "${terraform_remote_state.state.output.bucket_name}.s3-website-us-east-1.amazonaws.com"
+  s3_origin_id   = "${data.terraform_remote_state.state.outputs.bucket_name}-origin"
+  s3_domain_name = "${data.terraform_remote_state.state.outputs.bucket_name}.s3-website-us-east-1.amazonaws.com"
 }
 
 resource "aws_cloudfront_distribution" "this" {

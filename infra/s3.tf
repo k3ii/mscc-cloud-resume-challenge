@@ -9,9 +9,9 @@ resource "aws_s3_bucket" "crc_bucket" {
   force_destroy = true
 }
 
-resource "aws_s3_bucket_website" "crc_bucket_website" {
-  bucket = aws_s3_bucket.crc_bucket.bucket
-  index_document = {
+resource "aws_s3_bucket_website_configuration" "crc_bucket_website" {
+  bucket = aws_s3_bucket.crc_bucket.id
+  index_document {
     suffix = "index.html"
   }
 }
