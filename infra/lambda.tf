@@ -1,7 +1,7 @@
 data "archive_file" "update_counter" {
   type        = "zip"
-  source_dir  = "../cloudresume-api/"
-  output_path = "../cloudresume-api.zip"
+  source_dir  = "../backend/"
+  output_path = "../backend.zip"
 }
 
 resource "aws_lambda_function" "update_counter" {
