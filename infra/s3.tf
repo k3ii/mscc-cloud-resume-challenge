@@ -19,9 +19,18 @@ resource "aws_s3_bucket_public_access_block" "crc_bucket_public_access_block" {
 }
 
 resource "aws_s3_object" "crc_object" {
+  for_each = fileset(var.bucket_content, "**/*")
+
   bucket = aws_s3_bucket.crc_bucket.bucket
-  key    = "index.html"
-  source = "index.html"
+  key    = each.value
+  source = "${var.bucket_content}/${each.value}"
+
+  content_type = {
+    "html" = "text/html"
+    "css"  = "text/css"
+    "js"   = "application/javascript"
+    "ico"  = "image/x-icon"
+  }
 }
 
 resource "aws_s3_bucket_policy" "crc_bucket_policy" {
@@ -33,13 +42,12 @@ resource "aws_s3_bucket_policy" "crc_bucket_policy" {
       {
         Effect    = "Allow"
         Principal = "*"
-        Action    = "s3:GetObject"
-        Resource  = "${aws_s3_bucket.crc_bucket.arn}/*"
+        Action = [
+          "s3:GetObject"
+        ]
+        Resource = "${aws_s3_bucket.crc_bucket.arn}/*"
       },
     ]
   })
 }
 
-output "bucket_name" {
-  value = aws_s3_bucket.crc_bucket.bucket
-}
