@@ -19,7 +19,7 @@ resource "aws_s3_bucket_public_access_block" "crc_bucket_public_access_block" {
 }
 
 resource "aws_s3_object" "crc_object" {
-  for_each = fileset("${var.bucket_content}/*", "**/*")
+  for_each = fileset("${var.bucket_content}", "**/*")
 
   bucket       = aws_s3_bucket.crc_bucket.bucket
   key          = each.value
