@@ -52,6 +52,7 @@ jobs:
          name: dist
          path: |
            dist
+         if-no-files-found: error
 
  terraform:
   name: "Terraform Infrastructure Change Management"
