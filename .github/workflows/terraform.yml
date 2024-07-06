@@ -40,11 +40,18 @@ jobs:
          npm install
          npm run build
 
+     - name: debug
+       run: |
+         pwd
+         ls
+         tree 
+
      - name: Upload build artifacts
        uses: actions/upload-artifact@v4
        with:
          name: dist
-         path: dist
+         path: |
+           dist
 
  terraform:
   name: "Terraform Infrastructure Change Management"
