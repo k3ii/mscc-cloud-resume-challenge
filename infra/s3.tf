@@ -1,3 +1,13 @@
+locals {
+  content_type_map = {
+    "js"   = "application/json"
+    "html" = "text/html"
+    "css"  = "text/css"
+    "ico"  = "image/x-icon"
+  }
+}
+
+
 resource "aws_s3_bucket" "crc_bucket" {
   bucket        = var.bucket_name
   force_destroy = true
@@ -24,7 +34,7 @@ resource "aws_s3_object" "crc_object" {
   bucket       = aws_s3_bucket.crc_bucket.bucket
   key          = each.value
   source       = "${var.bucket_content}/${each.value}"
-  content_type = each.value.content_type
+  content_type = lookup(local.content_type_map, regex(".*\\.([a-zA-Z0-9]+)$", each.value)[0], "application/octet-stream")
 
 }
 
