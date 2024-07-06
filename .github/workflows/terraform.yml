@@ -44,7 +44,7 @@ jobs:
        run: |
          pwd
          ls
-         tree 
+         tree -L 1
 
      - name: Upload build artifacts
        uses: actions/upload-artifact@v4
