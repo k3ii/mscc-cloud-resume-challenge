@@ -2,7 +2,7 @@
 import { useResumeStore } from '@/stores/resume'
 
 import subheader from '@/components/SubHeader.vue'
-import listing from '@/components/Listing.vue'
+import detaillisting from '@/components/DetailListing.vue'
 
 const resumeStore = useResumeStore()
 </script>
@@ -10,7 +10,7 @@ const resumeStore = useResumeStore()
 <template>
   <div>
     <subheader subheader="Education" />
-    <listing :items="resumeStore.getEducation" />
+    <detaillisting :items="resumeStore.getEducation" />
   </div>
 </template>
 

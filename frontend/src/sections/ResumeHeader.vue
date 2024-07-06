@@ -5,13 +5,13 @@ const resumeStore = useResumeStore()
 </script>
 
 <template>
-  <div class="flex flex-col items-center space-y-0.5">
-    <div class="flex space-x-2 text-5xl">
+  <div class="flex flex-col items-center space-y-4">
+    <div class="flex space-x-2 text-5xl md:text-8xl">
       <h1 class="font-thin">{{ resumeStore.getHeader.firstName }}</h1>
       <h1 class="font-bold">{{ resumeStore.getHeader.lastName }}</h1>
     </div>
     <p
-      class="text-sm text-center"
+      class="text-center text-xl md:text-4xl"
       :style="{
         color: resumeStore.getStyles.color ? resumeStore.getStyles.color : 'rgb(220 38 38)'
       }"
@@ -21,6 +21,7 @@ const resumeStore = useResumeStore()
     <p class="italic text-gray-600 text-center">
       {{ resumeStore.getHeader.address }}
     </p>
+    <!-- TODO: change how the social information rendering -->
     <div class="flex space-x-2 flex-col md:flex-row text-center">
       <p>{{ resumeStore.getHeader.phone }}</p>
       <span class="hidden md:inline">|</span>

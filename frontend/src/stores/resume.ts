@@ -22,6 +22,7 @@ export const useResumeStore = defineStore('resume', () => {
   const experience = ref([
     {
       company: 'Omnious. Co., Ltd',
+      url: 'https://www.omnious.com',
       location: 'Seoul, Korea',
       title: 'Software Architect',
       startDate: 'Jun. 2017',
@@ -34,6 +35,7 @@ export const useResumeStore = defineStore('resume', () => {
     },
     {
       company: 'PLAT Corp.',
+      url: 'https://www.platcorp.com',
       location: 'Seoul, Korea',
       title: 'Co-Founder & Software Engineer',
       startDate: 'Jan. 2016',
@@ -136,6 +138,16 @@ export const useResumeStore = defineStore('resume', () => {
       },
     ]
   )
+  const skills = ref([
+    { key: 'Cloudfvfdvfdvfvfdvfdvfdvfdvdfvfdvfdvfdvdfvdfvfddfcdfcdcdcdcdcdcdcdcddcdcdcdcdcdcdcddc', value: 'Amazon Web Services, Google Cloud Platform, Microsoft Azure' },
+    { key: 'Backend', value: 'Python/Django, Node.js/Express, Golang, Ruby on Rails' },
+    { key: 'Frontend', value: 'React, Angular, Vue, jQuery' },
+    { key: 'Database', value: 'MySQL, PostgreSQL, MongoDB, Redis, Cassandra' },
+    { key: 'DevOps', value: 'Linux, Nginx, Docker, Ansible, Terraform, Jenkins' },
+    { key: 'Security', value: 'Information Security, Hacking, Penetration Testing' },
+    { key: 'Others', value: 'Vim, Git, JIRA, Bitbucket, Slack, Trello, Asana' },
+  ])
+
   const education = ref([
     {
       company: 'POSTECH (Pohang University of Science and Technology)',
@@ -183,6 +195,7 @@ export const useResumeStore = defineStore('resume', () => {
   const getPresentations = computed(() => presentation.value)
   const getWriting = computed(() => writing.value)
   const getCommittees = computed(() => committee.value)
+  const getSkills = computed(() => skills.value)
   const getEducation = computed(() => education.value)
   const getExtracurricular = computed(() => extracurricular.value)
 
@@ -195,6 +208,7 @@ export const useResumeStore = defineStore('resume', () => {
     getPresentations,
     getWriting,
     getCommittees,
+    getSkills,
     getEducation,
     getExtracurricular,
   }
