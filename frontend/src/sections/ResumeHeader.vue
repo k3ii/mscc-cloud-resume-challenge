@@ -21,17 +21,25 @@ const resumeStore = useResumeStore()
     <p class="italic text-gray-600 text-center">
       {{ resumeStore.getHeader.address }}
     </p>
-    <!-- TODO: change how the social information rendering -->
     <div class="flex space-x-2 flex-col md:flex-row text-center">
-      <p>{{ resumeStore.getHeader.phone }}</p>
-      <span class="hidden md:inline">|</span>
-      <p>{{ resumeStore.getHeader.email }}</p>
-      <span class="hidden md:inline">|</span>
-      <p>{{ resumeStore.getHeader.homepage }}</p>
-      <span class="hidden md:inline">|</span>
-      <p>{{ resumeStore.getHeader.github }}</p>
-      <span class="hidden md:inline">|</span>
-      <p>{{ resumeStore.getHeader.linkedin }}</p>
+      <div v-if="resumeStore.getHeader.phone" class="flex justify-center items-center space-x-1">
+        <font-awesome-icon icon="fa-solid fa-phone" />
+        <p>{{ resumeStore.getHeader.phone }}</p>
+      </div>
+      <div v-if="resumeStore.getHeader.homepage" class="flex justify-center items-center space-x-1">
+        <span class="hidden md:inline">|</span>
+        <font-awesome-icon icon="fa-solid fa-home" />
+        <p>{{ resumeStore.getHeader.homepage }}</p>
+      </div>
+      <!-- For social media links -->
+      <div
+        v-for="item in resumeStore.getHeader.socials"
+        class="flex justify-center items-center space-x-1"
+      >
+        <span class="hidden md:inline">|</span>
+        <font-awesome-icon :icon="['fa-brands', item.name.toLowerCase()]" />
+        <p>{{ item.url }}</p>
+      </div>
     </div>
     <p class="italic text-gray-600 text-center">
       {{ resumeStore.getHeader.quote }}
