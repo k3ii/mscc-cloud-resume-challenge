@@ -40,12 +40,6 @@ jobs:
          npm install
          npm run build
 
-     - name: debug
-       run: |
-         pwd
-         ls
-         tree -L 1
-
      - name: Upload build artifacts
        uses: actions/upload-artifact@v4
        with:
@@ -87,6 +81,12 @@ jobs:
       with:
         name: dist
         path: html-files
+
+    - name: debug
+      run: |
+        pwd
+        ls
+        tree -L 1
 
     - name: Terraform init
       id: init
