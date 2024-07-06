@@ -1,3 +1,13 @@
+locals {
+  content_type_map = {
+    "js"   = "application/json"
+    "html" = "text/html"
+    "css"  = "text/css"
+    "ico"  = "image/x-icon"
+  }
+}
+
+
 resource "aws_s3_bucket" "crc_bucket" {
   bucket        = var.bucket_name
   force_destroy = true
@@ -19,14 +29,15 @@ resource "aws_s3_bucket_public_access_block" "crc_bucket_public_access_block" {
 }
 
 resource "aws_s3_object" "crc_object" {
-  for_each = fileset(var.bucket_content, "**/*")
+  for_each = fileset("${var.bucket_content}", "**/*")
 
   bucket       = aws_s3_bucket.crc_bucket.bucket
   key          = each.value
   source       = "${var.bucket_content}/${each.value}"
-  content_type = each.value.content_type
+  content_type = lookup(local.content_type_map, regex(".*\\.([a-zA-Z0-9]+)$", each.value)[0], "application/octet-stream")
 
 }
+
 
 resource "aws_s3_bucket_policy" "crc_bucket_policy" {
   bucket = aws_s3_bucket.crc_bucket.bucket
