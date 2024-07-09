@@ -24,7 +24,7 @@ resource "aws_s3_bucket_public_access_block" "crc_bucket_public_access_block" {
   bucket                  = aws_s3_bucket.crc_bucket.id
   block_public_acls       = false
   block_public_policy     = false
-  ignore_public_acls      = true
+  ignore_public_acls      = false
   restrict_public_buckets = false
 }
 
@@ -57,3 +57,14 @@ resource "aws_s3_bucket_policy" "crc_bucket_policy" {
   })
 }
 
+resource "aws_s3_bucket_server_side_encryption_configuration" "crc_bucket" {
+  bucket                = "mscc-crc-bucket-albert-einstein"
+  expected_bucket_owner = null
+  rule {
+    bucket_key_enabled = true
+    apply_server_side_encryption_by_default {
+      kms_master_key_id = null
+      sse_algorithm     = "AES256"
+    }
+  }
+}
