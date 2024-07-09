@@ -6,9 +6,11 @@ on:
    - main
    paths:
    - infra/**
+   - frontend/**
  pull_request:
    paths:
    - infra/**
+   - frontend/**
 
 env:
   AWS_REGION: "us-east-1"
