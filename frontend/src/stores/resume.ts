@@ -145,7 +145,7 @@ export const useResumeStore = defineStore('resume', () => {
   ])
   const skills = ref([
     {
-      key: 'Cloudfvfdvfdvfvfdvfdvfdvfdvdfvfdvfdvfdvdfvdfvfddfcdfcdcdcdcdcdcdcdcddcdcdcdcdcdcdcddc',
+      key: 'Cloud',
       value: 'Amazon Web Services, Google Cloud Platform, Microsoft Azure'
     },
     { key: 'Backend', value: 'Python/Django, Node.js/Express, Golang, Ruby on Rails' },

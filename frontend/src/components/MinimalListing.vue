@@ -5,12 +5,12 @@
     <tbody>
       <tr v-for="item in items" :key="item.key">
         <td
-          class="w-1/2 lg:w-2/6 text-right font-bold overflow-hidden whitespace-nowrap text-ellipsis max-w-2 lg:max-w-xs"
+          class="w-1/4 lg:w-1/12 text-right font-bold overflow-hidden whitespace-nowrap text-ellipsis max-w-2 lg:max-w-xs"
         >
           {{ item.key }}
         </td>
         <td
-          class="w-1/2 lg:w-4/6 text-left italic overflow-hidden whitespace-nowrap text-ellipsis max-w-2 lg:max-w-xs"
+          class="w-3/4 lg:w-11/12 text-left italic overflow-hidden whitespace-nowrap text-ellipsis max-w-2 lg:max-w-xs"
         >
           {{ item.value }}
         </td>
@@ -28,4 +28,4 @@ const props = defineProps({
 })
 </script>
 
-<style lang=""></style>
+<style></style>
