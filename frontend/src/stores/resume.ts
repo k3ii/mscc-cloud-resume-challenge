@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useResumeStore = defineStore('resume', () => {
-  const styles= ref({ 
+  const styles = ref({
     color: '',
     fontFamily: ''
   })
@@ -12,16 +12,21 @@ export const useResumeStore = defineStore('resume', () => {
     title: 'Software Engineer · Security Expert',
     address: '42-8, Bangbae-ro 15-gil, Seocho-gu, Seoul, 00681, Rep. of KOREA',
     phone: '(+82) 10-1234-5678',
-    email: 'posquit0.bj@gmail.com',
     homepage: 'www.posquit0.com',
-    github: 'posquit0',
-    linkedin: 'posquit0',
+    socials: [
+      { name: 'Google', url: 'posquit0.bj@gmail.com' },
+      { name: 'GitHub', url: 'posquit0' },
+      { name: 'LinkedIn', url: 'posquit0' }
+    ],
     quote: 'Be the change that you want to see in the world.'
   })
-  const summary = ref('Current Site Reliability Engineer at start-up company Kasa. 7+ years experience specializing in the backend development, infrastructure automation, and computer hacking/security. Super nerd who loves Vim, Linux and OS X and enjoys to customize all of the development environment. Interested in devising a better problem-solving method for challenging tasks, and learning new technologies and tools if the need arises.')
+  const summary = ref(
+    'Current Site Reliability Engineer at start-up company Kasa. 7+ years experience specializing in the backend development, infrastructure automation, and computer hacking/security. Super nerd who loves Vim, Linux and OS X and enjoys to customize all of the development environment. Interested in devising a better problem-solving method for challenging tasks, and learning new technologies and tools if the need arises.'
+  )
   const experience = ref([
     {
       company: 'Omnious. Co., Ltd',
+      url: 'https://www.omnious.com',
       location: 'Seoul, Korea',
       title: 'Software Architect',
       startDate: 'Jun. 2017',
@@ -34,6 +39,7 @@ export const useResumeStore = defineStore('resume', () => {
     },
     {
       company: 'PLAT Corp.',
+      url: 'https://www.platcorp.com',
       location: 'Seoul, Korea',
       title: 'Co-Founder & Software Engineer',
       startDate: 'Jan. 2016',
@@ -43,7 +49,8 @@ export const useResumeStore = defineStore('resume', () => {
         'Built and deployed overall service infrastructure utilizing Docker container, CircleCI, and several AWS stack(Including EC2, ECS, Route 53, S3, CloudFront, RDS, ElastiCache, IAM), focusing on high-availability, fault tolerance, and auto-scaling.',
         'Developed an easy-to-use Payment module which connects to major PG(Payment Gateway) companies in Korea.'
       ]
-    }])
+    }
+  ])
   const honors = ref({
     international: [
       {
@@ -90,8 +97,9 @@ export const useResumeStore = defineStore('resume', () => {
     {
       company: 'DevFest Seoul by Google Developer Group Korea',
       location: 'Seoul, S.Korea',
-      title:'Presenter for Hosting Web Application for Free utilizing GitHub, Netlify and CloudFlare',
-      startDate: 'Jun. 2017', 
+      title:
+        'Presenter for Hosting Web Application for Free utilizing GitHub, Netlify and CloudFlare',
+      startDate: 'Jun. 2017',
       endDate: 'May. 2018',
       responsibilities: [
         'Introduced the history of web technology and the JAM stack which is for the modern web application development.',
@@ -122,52 +130,64 @@ export const useResumeStore = defineStore('resume', () => {
     }
   ])
   const committee = ref([
-      {
-        title: 'Problem Writer',
-        event: '2016 CODEGATE Hacking Competition World Final',
-        date: '2016',
-        location: 'Seoul, S.Korea'
-      },
-      {
-        title: 'Organizer & Co-director',
-        event: '1st POSTECH Hackathon',
-        date: '2013',
-        location: 'Seoul, S.Korea'
-      },
-    ]
-  )
+    {
+      title: 'Problem Writer',
+      event: '2016 CODEGATE Hacking Competition World Final',
+      date: '2016',
+      location: 'Seoul, S.Korea'
+    },
+    {
+      title: 'Organizer & Co-director',
+      event: '1st POSTECH Hackathon',
+      date: '2013',
+      location: 'Seoul, S.Korea'
+    }
+  ])
+  const skills = ref([
+    {
+      key: 'Cloudfvfdvfdvfvfdvfdvfdvfdvdfvfdvfdvfdvdfvdfvfddfcdfcdcdcdcdcdcdcdcddcdcdcdcdcdcdcddc',
+      value: 'Amazon Web Services, Google Cloud Platform, Microsoft Azure'
+    },
+    { key: 'Backend', value: 'Python/Django, Node.js/Express, Golang, Ruby on Rails' },
+    { key: 'Frontend', value: 'React, Angular, Vue, jQuery' },
+    { key: 'Database', value: 'MySQL, PostgreSQL, MongoDB, Redis, Cassandra' },
+    { key: 'DevOps', value: 'Linux, Nginx, Docker, Ansible, Terraform, Jenkins' },
+    { key: 'Security', value: 'Information Security, Hacking, Penetration Testing' },
+    { key: 'Others', value: 'Vim, Git, JIRA, Bitbucket, Slack, Trello, Asana' }
+  ])
+
   const education = ref([
     {
       company: 'POSTECH (Pohang University of Science and Technology)',
       location: 'Pohang, S.Korea',
-      title:'B.S. iN COMPUTER SCiENCE AND ENGiNEERiNG',
-      startDate: 'Mar. 2010', 
+      title: 'B.S. iN COMPUTER SCiENCE AND ENGiNEERiNG',
+      startDate: 'Mar. 2010',
       endDate: 'Aug. 2017',
       responsibilities: [
-        'Got a Chun Shin‑Il Scholarship which is given to promising students in CSE Dept.',
+        'Got a Chun Shin‑Il Scholarship which is given to promising students in CSE Dept.'
       ]
-    },
+    }
   ])
-  const extracurricular  = ref([
+  const extracurricular = ref([
     {
-      company: 'PoApper (Developers\' Network of POSTECH)',
+      company: "PoApper (Developers' Network of POSTECH)",
       location: 'Pohang, S.Korea',
-      title:'Core Member & President at 2013',
-      startDate: 'Jun. 2010', 
+      title: 'Core Member & President at 2013',
+      startDate: 'Jun. 2010',
       endDate: 'Jun. 2017',
       responsibilities: [
         'Reformed the society focusing on software engineering and building network on and off campus.',
-        'Proposed various marketing and network activities to raise awareness.',      
+        'Proposed various marketing and network activities to raise awareness.'
       ]
     },
     {
       company: 'PLUS (Laboratory for UNIX Security in POSTECH)',
       location: 'Pohang, S.Korea',
-      title:'Member',
-      startDate: 'Sep. 2010', 
+      title: 'Member',
+      startDate: 'Sep. 2010',
       endDate: 'Oct. 2011',
       responsibilities: [
-        'Gained expertise in hacking \& security areas, especially about internal of operating system based on UNIX and several exploit techniques.',
+        'Gained expertise in hacking & security areas, especially about internal of operating system based on UNIX and several exploit techniques.',
         'Participated on several hacking competition and won a good award.',
         'Conducted periodic security checks on overall IT system as a member of POSTECH CERT.',
         'Conducted penetration testing commissioned by national agency and corporation.'
@@ -183,6 +203,7 @@ export const useResumeStore = defineStore('resume', () => {
   const getPresentations = computed(() => presentation.value)
   const getWriting = computed(() => writing.value)
   const getCommittees = computed(() => committee.value)
+  const getSkills = computed(() => skills.value)
   const getEducation = computed(() => education.value)
   const getExtracurricular = computed(() => extracurricular.value)
 
@@ -195,7 +216,8 @@ export const useResumeStore = defineStore('resume', () => {
     getPresentations,
     getWriting,
     getCommittees,
+    getSkills,
     getEducation,
-    getExtracurricular,
+    getExtracurricular
   }
 })

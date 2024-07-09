@@ -2,25 +2,30 @@
   <div class="space-y-3">
     <div v-for="item in items">
       <div class="flex justify-between flex-col md:flex-row">
-        <h3 class="text-xl font-bold">{{ item.company }}</h3>
-        <p
-          class="italic"
-          :style="{
-            color: resumeStore.getStyles.color ? resumeStore.getStyles.color : 'rgb(220 38 38)'
-          }"
-        >
+        <a v-if="item.url" :href="item.url" target="_blank" class="text-xl font-bold">
+          {{ item.company }}
+        </a>
+        <h3 v-else class="text-xl font-bold">{{ item.company }}</h3>
+        <p class="italic">
           {{ item.location }}
         </p>
       </div>
       <div class="flex justify-between flex-col md:flex-row mb-2">
-        <p class="uppercase text-justify">{{ item.title }}</p>
+        <p
+          class="uppercase text-justify"
+          :style="{
+            color: resumeStore.getStyles.color ? resumeStore.getStyles.color : 'rgb(220 38 38)'
+          }"
+        >
+          {{ item.title }}
+        </p>
         <p class="text-gray-600 italic" v-if="item.endDate">
           {{ item.startDate }} - {{ item.endDate }}
         </p>
         <p class="text-gray-600 italic" v-else>{{ item.startDate }} - Present</p>
       </div>
       <ul class="list-disc list-inside">
-        <li v-for="responsibility in item.responsibilities" class="text-justify mb-3 md:mb-1">
+        <li v-for="responsibility in item.responsibilities" class="md:text-justify mb-3 md:mb-1">
           {{ responsibility }}
         </li>
       </ul>
