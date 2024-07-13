@@ -7,7 +7,6 @@ locals {
   }
 }
 
-
 resource "aws_s3_bucket" "crc_bucket" {
   bucket        = var.bucket_name
   force_destroy = true
@@ -28,16 +27,22 @@ resource "aws_s3_bucket_public_access_block" "crc_bucket_public_access_block" {
   restrict_public_buckets = false
 }
 
-resource "aws_s3_object" "crc_object" {
-  for_each = fileset("${var.bucket_content}", "**/*")
+resource "null_resource" "always_run" {
+  triggers = {
+    timestamp = timestamp()
+  }
+}
 
+resource "aws_s3_object" "crc_object" {
+  for_each     = fileset(var.bucket_content, "**/*")
   bucket       = aws_s3_bucket.crc_bucket.bucket
   key          = each.value
   source       = "${var.bucket_content}/${each.value}"
   content_type = lookup(local.content_type_map, regex(".*\\.([a-zA-Z0-9]+)$", each.value)[0], "application/octet-stream")
 
+  # This single etag line combines both the file hash and the null_resource ID
+  etag = "${filemd5("${var.bucket_content}/${each.value}")}-${null_resource.always_run.id}"
 }
-
 
 resource "aws_s3_bucket_policy" "crc_bucket_policy" {
   bucket = aws_s3_bucket.crc_bucket.bucket
@@ -68,3 +73,4 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "crc_bucket" {
     }
   }
 }
+
