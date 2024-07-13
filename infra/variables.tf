@@ -22,8 +22,14 @@ variable "function_handler" {
   description = "The handler for the cloudresume-api function."
 }
 
-variable "function_name" {
+variable "update_function_name" {
   type        = string
-  default     = "cloudresume-api"
+  default     = "cloudresume-api-update"
+  description = "The name of the cloudresume-api function."
+}
+
+variable "retrieve_function_name" {
+  type        = string
+  default     = "cloudresume-api-retrieve"
   description = "The name of the cloudresume-api function."
 }
