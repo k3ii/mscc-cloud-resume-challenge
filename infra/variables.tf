@@ -5,3 +5,8 @@ variable "bucket_name" {
 variable "bucket_content" {
   type = string
 }
+
+variable "subdomain_name" {
+  type = string
+}
+
