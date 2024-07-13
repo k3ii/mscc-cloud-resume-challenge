@@ -7,6 +7,11 @@ locals {
   }
 }
 
+resource "null_resource" "always_run" {
+  triggers = {
+    timestamp = "${timestamp()}"
+  }
+}
 
 resource "aws_s3_bucket" "crc_bucket" {
   bucket        = var.bucket_name
@@ -36,6 +41,11 @@ resource "aws_s3_object" "crc_object" {
   source       = "${var.bucket_content}/${each.value}"
   content_type = lookup(local.content_type_map, regex(".*\\.([a-zA-Z0-9]+)$", each.value)[0], "application/octet-stream")
 
+  lifecycle {
+    replace_triggered_by = [
+      null_resource.always_run
+    ]
+  }
 }
 
 
@@ -68,3 +78,4 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "crc_bucket" {
     }
   }
 }
+
