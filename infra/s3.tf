@@ -40,12 +40,7 @@ resource "aws_s3_object" "crc_object" {
   key          = each.value
   source       = "${var.bucket_content}/${each.value}"
   content_type = lookup(local.content_type_map, regex(".*\\.([a-zA-Z0-9]+)$", each.value)[0], "application/octet-stream")
-
-  lifecycle {
-    replace_triggered_by = [
-      null_resource.always_run
-    ]
-  }
+  depends_on   = [null_resource.always_run]
 }
 
 
