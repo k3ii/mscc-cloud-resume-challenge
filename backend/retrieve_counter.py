@@ -8,6 +8,6 @@ def handler(event, context):
 
     # Retrieve current views count
     response = table.get_item(Key={"id": "1"})
-    views = response["Item"]["views"]
+    views = response["Item"]["countViews"]
 
-    return {"statusCode": 200, "body": json.dumps({"views": views})}
+    return {"statusCode": 200, "body": {"views": views}}
