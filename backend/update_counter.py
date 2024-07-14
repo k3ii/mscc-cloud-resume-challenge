@@ -1,26 +1,38 @@
 import json
 import boto3
+from botocore.exceptions import ClientError
 
 
-def lambda_handler(event, context):
+def handler(event, context):
     dynamodb = boto3.resource("dynamodb")
     table = dynamodb.Table("cloudresume")
 
-    # Retrieve current views count
-    response = table.get_item(Key={"id": "1"})
-    views = response["Item"]["views"]
+    try:
+        # Retrieve current views count
+        response = table.get_item(Key={"id": "1"})
+        if "Item" in response:
+            views = response["Item"]["countViews"]
+        else:
+            # If the item does not exist, create it with countViews set to 1
+            table.put_item(Item={"id": "1", "countViews": 1})
+            views = 1
+    except ClientError as e:
+        # Log any other ClientError
+        print(e.response["Error"]["Message"])
+        raise
+    else:
+        if "Item" in response:
+            # Increment views count
+            views += 1
 
-    # Increment views count
-    views += 1
-
-    # Update DynamoDB with new views count
-    table.update_item(
-        Key={"id": "1"},
-        UpdateExpression="SET views = :val",
-        ExpressionAttributeValues={":val": views},
-    )
+            # Update DynamoDB with new views count
+            table.update_item(
+                Key={"id": "1"},
+                UpdateExpression="SET countViews = :val",
+                ExpressionAttributeValues={":val": views},
+            )
 
     return {
         "statusCode": 200,
-        "body": json.dumps({"message": "Counter incremented successfully"}),
+        "body": {"message": "Counter incremented successfully", "views": views},
     }
