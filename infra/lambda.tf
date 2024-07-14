@@ -31,3 +31,21 @@ resource "aws_lambda_function" "retrieve_counter" {
   timeout          = 10
   memory_size      = 128
 }
+
+resource "aws_lambda_permission" "visits_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.retrieve_handler.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.mscc_cloud_resume_challenge_api.execution_arn}/*/*"
+}
+
+resource "aws_lambda_permission" "update_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.update_function.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.mscc_cloud_resume_challenge_api.execution_arn}/*/*"
+}
+
+

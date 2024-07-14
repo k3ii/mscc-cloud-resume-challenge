@@ -6,11 +6,9 @@ resource "aws_api_gateway_rest_api" "mscc_cloud_resume_challenge_api" {
     types = ["REGIONAL"]
   }
 
-  api_key_source = "HEADER"
-
+  api_key_source               = "HEADER"
   disable_execute_api_endpoint = false
-
-  tags = {}
+  tags                         = {}
 }
 
 # /visits resource
@@ -30,22 +28,20 @@ resource "aws_api_gateway_method" "visits_get_method" {
 
 # Mock integration for /visits GET method
 resource "aws_api_gateway_integration" "visits_get_integration" {
-  rest_api_id = aws_api_gateway_rest_api.mscc_cloud_resume_challenge_api.id
-  resource_id = aws_api_gateway_resource.visits_resource.id
-  http_method = aws_api_gateway_method.visits_get_method.http_method
-  type        = "MOCK"
+  rest_api_id             = aws_api_gateway_rest_api.mscc_cloud_resume_challenge_api.id
+  resource_id             = aws_api_gateway_resource.visits_resource.id
+  http_method             = aws_api_gateway_method.visits_get_method.http_method
 
-  request_templates = {
-    "application/json" = jsonencode({
-      statusCode = 200
-    })
-  }
+  type                    = "AWS_PROXY"
+  integration_http_method = "POST"
+  uri                     = aws_lambda_function.retrieve_counter.invoke_arn
+
 }
 
-# /update resource
+# /visits/update resource
 resource "aws_api_gateway_resource" "update_resource" {
   rest_api_id = aws_api_gateway_rest_api.mscc_cloud_resume_challenge_api.id
-  parent_id   = aws_api_gateway_rest_api.mscc_cloud_resume_challenge_api.root_resource_id
+  parent_id   = aws_api_gateway_resource.visits_resource.id
   path_part   = "update"
 }
 
@@ -59,16 +55,13 @@ resource "aws_api_gateway_method" "update_get_method" {
 
 # Mock integration for /update GET method
 resource "aws_api_gateway_integration" "update_get_integration" {
-  rest_api_id = aws_api_gateway_rest_api.mscc_cloud_resume_challenge_api.id
-  resource_id = aws_api_gateway_resource.update_resource.id
-  http_method = aws_api_gateway_method.update_get_method.http_method
-  type        = "MOCK"
+  rest_api_id             = aws_api_gateway_rest_api.mscc_cloud_resume_challenge_api.id
+  resource_id             = aws_api_gateway_resource.update_resource.id
+  http_method             = aws_api_gateway_method.update_get_method.http_method
 
-  request_templates = {
-    "application/json" = jsonencode({
-      statusCode = 200
-    })
-  }
+  type                    = "AWS_PROXY"
+  integration_http_method = "POST"
+  uri                     = aws_lambda_function.update_counter.invoke_arn
 }
 
 # Deployment
