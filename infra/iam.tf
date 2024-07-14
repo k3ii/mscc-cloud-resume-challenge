@@ -15,7 +15,8 @@ resource "aws_iam_policy" "cloudresume_api_policy" {
           "logs:CreateLogStream",
           "logs:PutLogEvents",
           "dynamodb:GetItem",
-          "dynamodb:UpdateItem"
+          "dynamodb:UpdateItem",
+          "dynamodb:PutItem",
         ],
         "Resource": "*"
       }
