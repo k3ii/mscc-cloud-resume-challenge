@@ -10,26 +10,27 @@ def handler(event, context):
     try:
         # Retrieve current views count
         response = table.get_item(Key={"id": "1"})
-        views = response["Item"]["countViews"]
-    except ClientError as e:
-        if e.response["Error"]["Code"] == "ResourceNotFoundException":
+        if "Item" in response:
+            views = response["Item"]["countViews"]
+        else:
             # If the item does not exist, create it with countViews set to 1
             table.put_item(Item={"id": "1", "countViews": 1})
             views = 1
-        else:
-            # If some other error occurred, log it and re-raise
-            print(e.response["Error"]["Message"])
-            raise
+    except ClientError as e:
+        # Log any other ClientError
+        print(e.response["Error"]["Message"])
+        raise
     else:
-        # Increment views count
-        views += 1
+        if "Item" in response:
+            # Increment views count
+            views += 1
 
-        # Update DynamoDB with new views count
-        table.update_item(
-            Key={"id": "1"},
-            UpdateExpression="SET countViews = :val",
-            ExpressionAttributeValues={":val": views},
-        )
+            # Update DynamoDB with new views count
+            table.update_item(
+                Key={"id": "1"},
+                UpdateExpression="SET countViews = :val",
+                ExpressionAttributeValues={":val": views},
+            )
 
     return {
         "statusCode": 200,
