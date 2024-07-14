@@ -16,9 +16,15 @@ variable "python_runtime" {
   description = "The python runtime to use."
 }
 
-variable "function_handler" {
+variable "update_handler" {
   type        = string
   default     = "update_counter.handler"
+  description = "The handler for the cloudresume-api function."
+}
+
+variable "retrieve_handler" {
+  type        = string
+  default     = "retrieve_counter.handler"
   description = "The handler for the cloudresume-api function."
 }
 
