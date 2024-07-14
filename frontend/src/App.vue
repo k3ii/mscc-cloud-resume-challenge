@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useResumeStore } from '@/stores/resume'
+import { onMounted } from 'vue'
 
+import ResumeVisitorCounter from './sections/ResumeVisitorCounter.vue'
 import ResumeHeader from './sections/ResumeHeader.vue'
 import ResumeSummary from './sections/ResumeSummary.vue'
 import ResumeExperience from './sections/ResumeExperience.vue'
@@ -14,6 +16,10 @@ import ResumeExtracurricular from './sections/ResumeExtracurricular.vue'
 import ResumeFooter from './sections/ResumeFooter.vue'
 
 const resumeStore = useResumeStore()
+
+onMounted(() => {
+  resumeStore.updateVisitorCount()
+})
 </script>
 
 <template>
@@ -21,6 +27,7 @@ const resumeStore = useResumeStore()
     class="py-8 px-6 md:px-24 space-y-4 w-full md:w-5/6 bg-white md:m-4 shadow-lg md:text-2xl"
     :style="{ 'font-family': resumeStore.getStyles.fontFamily }"
   >
+    <ResumeVisitorCounter />
     <ResumeHeader />
     <ResumeSummary />
     <ResumeExperience />
