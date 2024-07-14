@@ -16,11 +16,11 @@ resource "aws_dynamodb_table" "cloudresumechallenge" {
   }
 
   global_secondary_index {
-    name               = "ViewsIndex"
-    hash_key           = "views"
-    read_capacity      = 1
-    write_capacity     = 1
-    projection_type    = "ALL"
+    name            = "ViewsIndex"
+    hash_key        = "views"
+    read_capacity   = 1
+    write_capacity  = 1
+    projection_type = "ALL"
   }
 
   tags = {
