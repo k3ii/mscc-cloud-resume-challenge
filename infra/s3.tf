@@ -39,8 +39,6 @@ resource "aws_s3_object" "crc_object" {
   key          = each.value
   source       = "${var.bucket_content}/${each.value}"
   content_type = lookup(local.content_type_map, regex(".*\\.([a-zA-Z0-9]+)$", each.value)[0], "application/octet-stream")
-
-  # This single etag line combines both the file hash and the null_resource ID
   etag = "${filemd5("${var.bucket_content}/${each.value}")}-${null_resource.always_run.id}"
 }
 
