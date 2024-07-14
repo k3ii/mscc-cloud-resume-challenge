@@ -3,7 +3,7 @@
     <p>Visitor Counter: {{ resumeStore.getVisitorCount }}</p>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
 import { useResumeStore } from '@/stores/resume'
 
