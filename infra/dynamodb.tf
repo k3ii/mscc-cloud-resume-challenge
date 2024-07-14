@@ -1,12 +1,12 @@
 resource "aws_dynamodb_table" "cloudresumechallenge" {
-  name           = "cloudresumechallenge"
+  name           = "cloudresume"
   billing_mode   = "PROVISIONED"
   read_capacity  = 1
   write_capacity = 1
-  hash_key       = "Id"
+  hash_key       = "id"
 
   attribute {
-    name = "Id"
+    name = "id"
     type = "S"
   }
 
