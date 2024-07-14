@@ -2,6 +2,8 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useResumeStore = defineStore('resume', () => {
+  // state
+  const visitorCount = ref(0)
   const styles = ref({
     color: '',
     fontFamily: ''
@@ -195,6 +197,8 @@ export const useResumeStore = defineStore('resume', () => {
     }
   ])
 
+  // getters
+  const getVisitorCount = computed(() => visitorCount.value)
   const getStyles = computed(() => styles.value)
   const getHeader = computed(() => header.value)
   const getSummary = computed(() => summary.value)
@@ -207,7 +211,35 @@ export const useResumeStore = defineStore('resume', () => {
   const getEducation = computed(() => education.value)
   const getExtracurricular = computed(() => extracurricular.value)
 
+  // actions
+  async function setVisitorCount() {
+    try {
+      const res = await fetch(process.env.VUE_APP_SET_VISITOR_COUNT_API || '')
+      
+      const data = await res.json()
+      if (data.body && typeof data.body.views === 'number') {
+        visitorCount.value = data.body.views;
+      } else {
+        throw new Error("Invalid response format");
+      }
+    }
+    catch (e) {
+      console.error(e)
+    }
+  }
+
+  async function updateVisitorCount() {
+    try {
+      await fetch(process.env.VUE_APP_INCREMENT_VISITOR_COUNT_API || '')
+      await setVisitorCount()
+    }
+    catch (e) {
+      console.error(e)
+    }
+  }
+
   return {
+    getVisitorCount,
     getStyles,
     getHeader,
     getSummary,
@@ -218,6 +250,9 @@ export const useResumeStore = defineStore('resume', () => {
     getCommittees,
     getSkills,
     getEducation,
-    getExtracurricular
+    getExtracurricular,
+
+    setVisitorCount,
+    updateVisitorCount
   }
 })
