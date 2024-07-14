@@ -28,9 +28,9 @@ resource "aws_api_gateway_method" "visits_get_method" {
 
 # Mock integration for /visits GET method
 resource "aws_api_gateway_integration" "visits_get_integration" {
-  rest_api_id             = aws_api_gateway_rest_api.mscc_cloud_resume_challenge_api.id
-  resource_id             = aws_api_gateway_resource.visits_resource.id
-  http_method             = aws_api_gateway_method.visits_get_method.http_method
+  rest_api_id = aws_api_gateway_rest_api.mscc_cloud_resume_challenge_api.id
+  resource_id = aws_api_gateway_resource.visits_resource.id
+  http_method = aws_api_gateway_method.visits_get_method.http_method
 
   type                    = "AWS_PROXY"
   integration_http_method = "POST"
@@ -55,9 +55,9 @@ resource "aws_api_gateway_method" "update_get_method" {
 
 # Mock integration for /update GET method
 resource "aws_api_gateway_integration" "update_get_integration" {
-  rest_api_id             = aws_api_gateway_rest_api.mscc_cloud_resume_challenge_api.id
-  resource_id             = aws_api_gateway_resource.update_resource.id
-  http_method             = aws_api_gateway_method.update_get_method.http_method
+  rest_api_id = aws_api_gateway_rest_api.mscc_cloud_resume_challenge_api.id
+  resource_id = aws_api_gateway_resource.update_resource.id
+  http_method = aws_api_gateway_method.update_get_method.http_method
 
   type                    = "AWS_PROXY"
   integration_http_method = "POST"
