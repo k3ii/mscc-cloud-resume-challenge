@@ -39,7 +39,7 @@ resource "aws_s3_object" "crc_object" {
   key          = each.value
   source       = "${var.bucket_content}/${each.value}"
   content_type = lookup(local.content_type_map, regex(".*\\.([a-zA-Z0-9]+)$", each.value)[0], "application/octet-stream")
-  etag = "${filemd5("${var.bucket_content}/${each.value}")}-${null_resource.always_run.id}"
+  etag         = "${filemd5("${var.bucket_content}/${each.value}")}-${null_resource.always_run.id}"
 }
 
 resource "aws_s3_bucket_policy" "crc_bucket_policy" {
