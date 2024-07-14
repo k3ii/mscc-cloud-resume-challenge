@@ -89,6 +89,8 @@ jobs:
         pwd
         ls
         tree -L 1
+        cd html-files/assets
+        ls
 
     - name: Terraform init
       id: init
