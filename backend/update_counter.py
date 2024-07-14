@@ -6,7 +6,6 @@ from botocore.exceptions import ClientError
 def handler(event, context):
     dynamodb = boto3.resource("dynamodb")
     table = dynamodb.Table("cloudresume")
-
     try:
         # Retrieve current views count
         response = table.get_item(Key={"id": "1"})
@@ -24,7 +23,6 @@ def handler(event, context):
         if "Item" in response:
             # Increment views count
             views += 1
-
             # Update DynamoDB with new views count
             table.update_item(
                 Key={"id": "1"},
@@ -34,5 +32,10 @@ def handler(event, context):
 
     return {
         "statusCode": 200,
+        "headers": {
+            "Access-Control-Allow-Origin": "*",  # Allow all origins
+            "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
+            "Access-Control-Allow-Methods": "GET,POST,OPTIONS",  # Adjust methods as needed
+        },
         "body": {"message": "Counter incremented successfully", "views": views},
     }

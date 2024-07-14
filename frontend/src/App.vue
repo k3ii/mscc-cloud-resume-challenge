@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useResumeStore } from '@/stores/resume'
-import { onMounted } from 'vue'
+import { onBeforeMount } from 'vue'
 
 import ResumeVisitorCounter from './sections/ResumeVisitorCounter.vue'
 import ResumeHeader from './sections/ResumeHeader.vue'
@@ -17,7 +17,7 @@ import ResumeFooter from './sections/ResumeFooter.vue'
 
 const resumeStore = useResumeStore()
 
-onMounted(() => {
+onBeforeMount(() => {
   resumeStore.updateVisitorCount()
 })
 </script>
