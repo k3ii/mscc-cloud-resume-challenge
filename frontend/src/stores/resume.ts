@@ -215,8 +215,13 @@ export const useResumeStore = defineStore('resume', () => {
   async function setVisitorCount() {
     try {
       const res = await fetch(process.env.VUE_APP_SET_VISITOR_COUNT_API || '')
+      
       const data = await res.json()
-      visitorCount.value = data.value 
+      if (data.body && typeof data.body.views === 'number') {
+        visitorCount.value = data.body.views;
+      } else {
+        throw new Error("Invalid response format");
+      }
     }
     catch (e) {
       console.error(e)
