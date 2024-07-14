@@ -1,13 +1,13 @@
 # API Gateway REST API
 resource "aws_api_gateway_rest_api" "mscc_cloud_resume_challenge_api" {
   name = "msccCloudResumeChallengeAPI"
-  
+
   endpoint_configuration {
     types = ["REGIONAL"]
   }
-  
+
   api_key_source = "HEADER"
-  
+
   disable_execute_api_endpoint = false
 
   tags = {}
