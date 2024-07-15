@@ -18,7 +18,11 @@ import ResumeFooter from './sections/ResumeFooter.vue'
 const resumeStore = useResumeStore()
 
 onBeforeMount(() => {
-  resumeStore.updateVisitorCount()
+  if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+    resumeStore.setVisitorCount()
+  } else {
+    resumeStore.updateVisitorCount()
+  }
 })
 </script>
 
