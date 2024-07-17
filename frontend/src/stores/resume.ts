@@ -9,190 +9,196 @@ export const useResumeStore = defineStore('resume', () => {
     fontFamily: ''
   })
   const header = ref({
-    firstName: 'Byungjin',
-    lastName: 'Park',
-    title: 'Software Engineer · Security Expert',
-    address: '42-8, Bangbae-ro 15-gil, Seocho-gu, Seoul, 00681, Rep. of KOREA',
-    phone: '(+82) 10-1234-5678',
-    homepage: 'www.posquit0.com',
+    firstName: 'Mario',
+    lastName: 'Mario',
+    title: 'Professional Plumber · Hero of the Mushroom Kingdom',
+    address: '123 Pipe Street, Mushroom Kingdom, 12345',
+    phone: '(+1) 555-JUMP-MAN',
+    homepage: 'www.supermario.com',
     socials: [
-      { name: 'Google', url: 'posquit0.bj@gmail.com' },
-      { name: 'GitHub', url: 'posquit0' },
-      { name: 'LinkedIn', url: 'posquit0' }
+      { name: 'Google', url: 'mario@gmail.com' },
+      { name: 'Github', url: 'itsamemario' },
+      { name: 'Linkedin', url: 'mariobros' }
     ],
-    quote: 'Be the change that you want to see in the world.'
+    quote: 'It\'s-a me, Mario! Let\'s-a go!'
   })
+  
   const summary = ref(
-    'Current Site Reliability Engineer at start-up company Kasa. 7+ years experience specializing in the backend development, infrastructure automation, and computer hacking/security. Super nerd who loves Vim, Linux and OS X and enjoys to customize all of the development environment. Interested in devising a better problem-solving method for challenging tasks, and learning new technologies and tools if the need arises.'
+    'Experienced hero and plumber with over 35 years of rescuing princesses, defeating evil kings, and saving various kingdoms. Skilled in jumping, powerup utilization, and kart racing. Known for quick problem-solving skills and adaptability in face of diverse challenges. Always ready for a new adventure, whether it\'s in 2D or 3D!'
   )
+  
   const experience = ref([
     {
-      company: 'Omnious. Co., Ltd',
-      url: 'https://www.omnious.com',
-      location: 'Seoul, Korea',
-      title: 'Software Architect',
-      startDate: 'Jun. 2017',
+      company: 'Mushroom Kingdom Royal Guard',
+      url: 'https://www.mushroomkingdom.com',
+      location: 'Mushroom Kingdom',
+      title: 'Chief Hero and Princess Rescuer',
+      startDate: 'Jul. 1985',
       endDate: 'Present',
       responsibilities: [
-        'Provisioned an easily managable hybrid infrastructure(Amazon AWS + On-premise) utilizing IaC(Infrastructure as Code) tools like Ansible, Packer and Terraform.',
-        'Built fully automated CI/CD pipelines on CircleCI for containerized applications using Docker, AWS ECR and Rancher.',
-        'Designed an overall service architecture and pipelines of the Machine Learning based Fashion Tagging API SaaS product with the micro‑services architecture.'
+        'Successfully thwarted numerous kidnapping attempts by Bowser, ensuring the safety of Princess Peach.',
+        'Navigated through complex castle systems, overcoming various obstacles and enemies.',
+        'Mastered the use of power-ups such as Super Mushrooms, Fire Flowers, and Star Power to combat threats.'
       ]
     },
     {
-      company: 'PLAT Corp.',
-      url: 'https://www.platcorp.com',
-      location: 'Seoul, Korea',
-      title: 'Co-Founder & Software Engineer',
-      startDate: 'Jan. 2016',
-      endDate: 'May 2017',
+      company: 'Mario Bros. Plumbing',
+      url: 'https://www.mariobrosplumbing.com',
+      location: 'Brooklyn, New York',
+      title: 'Co-Founder & Master Plumber',
+      startDate: 'Jun. 1983',
+      endDate: 'Jul. 1985',
       responsibilities: [
-        'Implemented RESTful API server for car rental booking application(CARPLAT in Google Play).',
-        'Built and deployed overall service infrastructure utilizing Docker container, CircleCI, and several AWS stack(Including EC2, ECS, Route 53, S3, CloudFront, RDS, ElastiCache, IAM), focusing on high-availability, fault tolerance, and auto-scaling.',
-        'Developed an easy-to-use Payment module which connects to major PG(Payment Gateway) companies in Korea.'
+        'Co-founded and operated a successful plumbing business with brother Luigi.',
+        'Specialized in pipe repair, drain cleaning, and mysterious underworld pipe system navigation.',
+        'Developed innovative techniques for coin collection and turtle shell repurposing.'
       ]
     }
   ])
+  
   const honors = ref({
     international: [
       {
-        title: 'Finalist',
-        event: 'DEFCON 26th CTF Hacking Competition World Final',
+        title: 'Gold Medal',
+        event: 'Olympic Games',
+        date: '2020',
+        location: 'Tokyo, Japan'
+      },
+      {
+        title: 'MVP',
+        event: 'Smash Bros. Ultimate Tournament',
         date: '2018',
-        location: 'Las Vegas, U.S.A'
+        location: 'Los Angeles, U.S.A'
       },
       {
-        title: 'Finalist',
-        event: 'DEFCON 25th CTF Hacking Competition World Final',
-        date: '2017',
-        location: 'Las Vegas, U.S.A'
-      },
-      {
-        title: 'Finalist',
-        event: 'DEFCON 22nd CTF Hacking Competition World Final',
+        title: 'Best Mustache',
+        event: 'Facial Hair Bros. Competition',
         date: '2014',
-        location: 'Las Vegas, U.S.A'
+        location: 'Paris, France'
       }
     ],
     domestic: [
       {
-        title: '3rd Place',
-        event: 'WITHCON Hacking Competition Final',
-        date: '2015',
-        location: 'Seoul, S.Korea'
+        title: '1st Place',
+        event: 'Mushroom Kingdom Grand Prix',
+        date: '2022',
+        location: 'Rainbow Road, Mushroom Kingdom'
       },
       {
-        title: 'Silver Prize',
-        event: 'KISA HDCON Hacking Competition Final',
-        date: '2017',
-        location: 'Seoul, S.Korea'
+        title: 'Golden Coin Award',
+        event: 'Annual Coin Collecting Championship',
+        date: '2021',
+        location: 'Coin Heaven, Sky World'
       },
       {
-        title: 'Silver Prize',
-        event: 'KISA HDCON Hacking Competition Final',
-        date: '2013',
-        location: 'Seoul, S.Korea'
+        title: 'Fire Flower Trophy',
+        event: 'Power-Up Mastery Competition',
+        date: '2019',
+        location: 'Peach\'s Castle, Mushroom Kingdom'
       }
     ]
   })
+  
   const presentation = ref([
     {
-      company: 'DevFest Seoul by Google Developer Group Korea',
-      location: 'Seoul, S.Korea',
-      title:
-        'Presenter for Hosting Web Application for Free utilizing GitHub, Netlify and CloudFlare',
-      startDate: 'Jun. 2017',
-      endDate: 'May. 2018',
+      company: 'Goomba Stomping Seminar',
+      location: 'Mushroom Kingdom',
+      title: 'Keynote Speaker on Advanced Jumping Techniques',
+      startDate: 'Sep. 2021',
+      endDate: 'Oct. 2021',
       responsibilities: [
-        'Introduced the history of web technology and the JAM stack which is for the modern web application development.',
-        'Introduced how to freely host the web application with high performance utilizing global CDN services.'
+        'Demonstrated various jumping techniques including the Triple Jump, Wall Jump, and Long Jump.',
+        'Discussed the history and evolution of enemy-stomping strategies in platform games.'
       ]
     },
     {
-      company: '6th CodeEngn (Reverse Engineering Conference)',
-      location: 'Seoul, S.Korea',
-      title: 'Presenter for DEFCON 20th : The way to go to Las Vegas',
-      startDate: 'Jul. 2012',
+      company: '8th Pixel-Con (Retro Gaming Conference)',
+      location: 'New Donk City',
+      title: 'Presenter for "From 8-bit to HD: My Journey Through Video Game History"',
+      startDate: 'Apr. 2019',
       endDate: '',
       responsibilities: [
-        'Introduced CTF(Capture the Flag) hacking competition and advanced techniques and strategy for CTF'
+        'Shared personal experiences of starring in video games across multiple generations and technological advancements.'
       ]
     }
   ])
+  
   const writing = ref([
     {
-      company: 'A Guide for Developers in Start‑up',
-      location: 'Facebook Page',
-      title: 'PFOUNDER & WRiTER',
-      startDate: 'Jan. 2015',
+      company: 'The Plumber\'s Guide to Saving Princesses',
+      location: 'Mushroom Kingdom Press',
+      title: 'AUTHOR',
+      startDate: 'Jan. 2020',
       endDate: '',
       responsibilities: [
-        'Drafted daily news for developers in Korea about IT technologies, issues about start‑up.'
+        'Wrote a comprehensive guide on princess-saving techniques, castle navigation, and boss battle strategies.'
       ]
     }
   ])
+  
   const committee = ref([
     {
-      title: 'Problem Writer',
-      event: '2016 CODEGATE Hacking Competition World Final',
-      date: '2016',
-      location: 'Seoul, S.Korea'
+      title: 'Judge',
+      event: '2023 Mushroom Kingdom Kart Racing Championship',
+      date: '2023',
+      location: 'Various Tracks, Mushroom Kingdom'
     },
     {
-      title: 'Organizer & Co-director',
-      event: '1st POSTECH Hackathon',
-      date: '2013',
-      location: 'Seoul, S.Korea'
+      title: 'Organizer & Host',
+      event: '1st Annual Mario Party',
+      date: '2018',
+      location: 'Peach\'s Castle, Mushroom Kingdom'
     }
   ])
+  
   const skills = ref([
     {
-      key: 'Cloud',
-      value: 'Amazon Web Services, Google Cloud Platform, Microsoft Azure'
+      key: 'Athletics',
+      value: 'Jumping, Running, Swimming, Flying (with cape)'
     },
-    { key: 'Backend', value: 'Python/Django, Node.js/Express, Golang, Ruby on Rails' },
-    { key: 'Frontend', value: 'React, Angular, Vue, jQuery' },
-    { key: 'Database', value: 'MySQL, PostgreSQL, MongoDB, Redis, Cassandra' },
-    { key: 'DevOps', value: 'Linux, Nginx, Docker, Ansible, Terraform, Jenkins' },
-    { key: 'Security', value: 'Information Security, Hacking, Penetration Testing' },
-    { key: 'Others', value: 'Vim, Git, JIRA, Bitbucket, Slack, Trello, Asana' }
+    { key: 'Combat', value: 'Fireball throwing, Hammer wielding, Goomba stomping' },
+    { key: 'Vehicles', value: 'Kart racing, Yoshi riding, Underwater navigation' },
+    { key: 'Power-ups', value: 'Super Mushroom, Fire Flower, Super Star, Tanooki Suit' },
+    { key: 'Tools', value: 'Plunger, Wrench, F.L.U.D.D., Various caps' },
+    { key: 'Languages', value: 'Italian, English, Yoshi, Goomba' },
+    { key: 'Others', value: 'Coin collecting, Pipe travel, Princess rescuing, Mini-game mastery' }
   ])
-
+  
   const education = ref([
     {
-      company: 'POSTECH (Pohang University of Science and Technology)',
-      location: 'Pohang, S.Korea',
-      title: 'B.S. iN COMPUTER SCiENCE AND ENGiNEERiNG',
-      startDate: 'Mar. 2010',
-      endDate: 'Aug. 2017',
+      company: 'Mushroom Kingdom Plumbing Academy',
+      location: 'Toad Town, Mushroom Kingdom',
+      title: 'MASTER\'S DEGREE IN ADVANCED PLUMBING AND HEROICS',
+      startDate: 'Sep. 1980',
+      endDate: 'Jun. 1983',
       responsibilities: [
-        'Got a Chun Shin‑Il Scholarship which is given to promising students in CSE Dept.'
+        'Graduated with honors. Received the Golden Plunger Award for excellence in practical applications.'
       ]
     }
   ])
+  
   const extracurricular = ref([
     {
-      company: "PoApper (Developers' Network of POSTECH)",
-      location: 'Pohang, S.Korea',
-      title: 'Core Member & President at 2013',
-      startDate: 'Jun. 2010',
-      endDate: 'Jun. 2017',
+      company: "Mushroom Kingdom Sports Association",
+      location: 'Mushroom Kingdom',
+      title: 'All-Star Athlete',
+      startDate: 'Jan. 1996',
+      endDate: 'Present',
       responsibilities: [
-        'Reformed the society focusing on software engineering and building network on and off campus.',
-        'Proposed various marketing and network activities to raise awareness.'
+        'Participated in various sports including tennis, golf, soccer, and Olympic events.',
+        'Organized friendly competitions to promote sportsmanship across different kingdoms.'
       ]
     },
     {
-      company: 'PLUS (Laboratory for UNIX Security in POSTECH)',
-      location: 'Pohang, S.Korea',
-      title: 'Member',
-      startDate: 'Sep. 2010',
-      endDate: 'Oct. 2011',
+      company: 'Warp Pipe Explorers Club',
+      location: 'Various Kingdoms',
+      title: 'Founding Member',
+      startDate: 'Jul. 1985',
+      endDate: 'Present',
       responsibilities: [
-        'Gained expertise in hacking & security areas, especially about internal of operating system based on UNIX and several exploit techniques.',
-        'Participated on several hacking competition and won a good award.',
-        'Conducted periodic security checks on overall IT system as a member of POSTECH CERT.',
-        'Conducted penetration testing commissioned by national agency and corporation.'
+        'Led expeditions to discover and map out new warp pipe routes across multiple worlds.',
+        'Conducted research on the physics of pipe travel and its applications in modern transportation.',
+        'Mentored young adventurers in the art of safe and effective warp pipe navigation.'
       ]
     }
   ])
