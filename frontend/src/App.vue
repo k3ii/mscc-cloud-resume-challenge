@@ -28,8 +28,15 @@ onBeforeMount(() => {
 
 <template>
   <div
+    class="grid h-screen w-screen bg-white content-center justify-items-center"
+    v-if="resumeStore.getVisitorCount === 0"
+  >
+    <span class="blink_me text-3xl md:text-8xl">Loading...</span>
+  </div>
+  <div
     class="py-8 px-6 md:px-24 space-y-4 w-full md:w-5/6 bg-white md:m-4 shadow-lg md:text-2xl"
     :style="{ 'font-family': resumeStore.getStyles.fontFamily }"
+    v-else
   >
     <ResumeVisitorCounter />
     <ResumeHeader />
@@ -46,4 +53,14 @@ onBeforeMount(() => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+</style>
