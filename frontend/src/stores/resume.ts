@@ -6,7 +6,11 @@ export const useResumeStore = defineStore('resume', () => {
   const visitorCount = ref(0)
   const styles = ref({
     color: '',
-    fontFamily: ''
+    fontFamily: '',
+    loadingScreen: {
+      imageUrl:'/src/assets/images/mario-jump.gif',
+      text: 'Here we go... preparing your adventure!'
+    }
   })
   const header = ref({
     firstName: 'Mario',
