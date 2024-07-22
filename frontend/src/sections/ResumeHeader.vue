@@ -33,7 +33,8 @@ const resumeStore = useResumeStore()
       </div>
       <!-- For social media links -->
       <div
-        v-for="item in resumeStore.getHeader.socials"
+        v-for="(item, index) in resumeStore.getHeader.socials"
+        :key="index"
         class="flex justify-center items-center space-x-1"
       >
         <span class="hidden md:inline">|</span>

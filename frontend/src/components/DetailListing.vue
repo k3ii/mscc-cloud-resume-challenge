@@ -1,6 +1,6 @@
 <template lang="">
   <div class="space-y-4 md:space-y-8">
-    <div v-for="item in items">
+    <div v-for="(item, index) in items" :key="index">
       <div class="flex justify-between flex-col md:flex-row">
         <a v-if="item.url" :href="item.url" target="_blank" class="text-2xl font-bold">
           {{ item.company }}
@@ -25,7 +25,11 @@
         <p class="text-gray-600 italic" v-else>{{ item.startDate }} - Present</p>
       </div>
       <ul class="list-disc list-inside">
-        <li v-for="responsibility in item.responsibilities" class="md:text-justify mb-2 md:mb-1">
+        <li
+          v-for="(responsibility, index) in item.responsibilities"
+          :key="index"
+          class="md:text-justify mb-2 md:mb-1"
+        >
           {{ responsibility }}
         </li>
       </ul>

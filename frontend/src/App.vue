@@ -2,6 +2,7 @@
 import { useResumeStore } from '@/stores/resume'
 import { onBeforeMount } from 'vue'
 
+import ResumeLoading from './components/ResumeLoading.vue'
 import ResumeVisitorCounter from './sections/ResumeVisitorCounter.vue'
 import ResumeHeader from './sections/ResumeHeader.vue'
 import ResumeSummary from './sections/ResumeSummary.vue'
@@ -27,26 +28,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div v-if="resumeStore.getVisitorCount === 0">
-    <div
-      class="grid h-screen w-screen bg-white content-center justify-items-center"
-      v-if="resumeStore.getStyles.loadingScreen.imageUrl"
-    >
-      <img :src="resumeStore.getStyles.loadingScreen.imageUrl" />
-      <span class="blink_me text-3xl md:text-4xl text-center">{{
-        resumeStore.getStyles.loadingScreen.text
-          ? resumeStore.getStyles.loadingScreen.text
-          : 'Loading...'
-      }}</span>
-    </div>
-    <div class="grid h-screen w-screen bg-white content-center justify-items-center" v-else>
-      <span class="blink_me text-3xl md:text-8xl">{{
-        resumeStore.getStyles.loadingScreen.text
-          ? resumeStore.getStyles.loadingScreen.text
-          : 'Loading...'
-      }}</span>
-    </div>
-  </div>
+  <ResumeLoading v-if="resumeStore.getVisitorCount === 0" />
 
   <div
     class="py-8 px-6 md:px-24 space-y-4 w-full md:w-5/6 bg-white md:m-4 shadow-lg md:text-2xl"

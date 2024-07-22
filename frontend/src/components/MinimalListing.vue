@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   items: {
     type: Array as () => { key: string; value: string }[],
     required: true
