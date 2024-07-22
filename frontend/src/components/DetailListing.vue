@@ -1,11 +1,11 @@
 <template lang="">
-  <div class="space-y-3">
+  <div class="space-y-4 md:space-y-8">
     <div v-for="item in items">
       <div class="flex justify-between flex-col md:flex-row">
-        <a v-if="item.url" :href="item.url" target="_blank" class="text-xl font-bold">
+        <a v-if="item.url" :href="item.url" target="_blank" class="text-2xl font-bold">
           {{ item.company }}
         </a>
-        <h3 v-else class="text-xl font-bold">{{ item.company }}</h3>
+        <h3 v-else class="text-2xl font-bold">{{ item.company }}</h3>
         <p class="italic">
           {{ item.location }}
         </p>
@@ -25,7 +25,7 @@
         <p class="text-gray-600 italic" v-else>{{ item.startDate }} - Present</p>
       </div>
       <ul class="list-disc list-inside">
-        <li v-for="responsibility in item.responsibilities" class="md:text-justify mb-3 md:mb-1">
+        <li v-for="responsibility in item.responsibilities" class="md:text-justify mb-2 md:mb-1">
           {{ responsibility }}
         </li>
       </ul>

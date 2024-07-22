@@ -39,11 +39,12 @@ onBeforeMount(() => {
           : 'Loading...'
       }}</span>
     </div>
-    <div
-      class="grid h-screen w-screen bg-white content-center justify-items-center"
-      v-else-if="!resumeStore.getStyles.loadingScreen.imageUrl"
-    >
-      <span class="blink_me text-3xl md:text-8xl">Loading...</span>
+    <div class="grid h-screen w-screen bg-white content-center justify-items-center" v-else>
+      <span class="blink_me text-3xl md:text-8xl">{{
+        resumeStore.getStyles.loadingScreen.text
+          ? resumeStore.getStyles.loadingScreen.text
+          : 'Loading...'
+      }}</span>
     </div>
   </div>
 
