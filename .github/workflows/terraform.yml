@@ -6,11 +6,11 @@ on:
    - main
    paths:
    - infra/**
-   - frontend/**
+   - vue3-awesome-cv-template/**
  pull_request:
    paths:
    - infra/**
-   - frontend/**
+   - vue3-awesome-cv-template/**
 
 env:
   AWS_REGION: "us-east-1"
@@ -34,7 +34,7 @@ jobs:
        with:
         submodules: 'recursive'
 
-     - name: debug
+     - name: Debug
        run: |
           pwd
           ls -la
@@ -91,13 +91,12 @@ jobs:
         name: dist
         path: infra/html-files
 
-    - name: debug
+    - name: Debug
       run: |
         pwd
-        ls
-        tree -L 1
         cd html-files/assets
-        ls
+        pwd
+        ls -la
         for file in *; do
           file "$file"
         done
