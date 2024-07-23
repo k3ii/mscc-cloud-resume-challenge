@@ -6,7 +6,7 @@ const resumeStore = useResumeStore()
 
 <template>
   <div class="flex flex-col items-center space-y-4">
-    <div class="flex space-x-2 text-5xl md:text-8xl">
+    <div class="flex flex-col items-center md:flex-row space-x-2 text-5xl md:text-8xl">
       <h1 class="font-thin">{{ resumeStore.getHeader.firstName }}</h1>
       <h1 class="font-bold">{{ resumeStore.getHeader.lastName }}</h1>
     </div>
@@ -33,7 +33,8 @@ const resumeStore = useResumeStore()
       </div>
       <!-- For social media links -->
       <div
-        v-for="item in resumeStore.getHeader.socials"
+        v-for="(item, index) in resumeStore.getHeader.socials"
+        :key="index"
         class="flex justify-center items-center space-x-1"
       >
         <span class="hidden md:inline">|</span>
