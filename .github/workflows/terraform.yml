@@ -6,11 +6,11 @@ on:
    - main
    paths:
    - infra/**
-   - frontend/**
+   - vue3-awesome-cv-template/**
  pull_request:
    paths:
    - infra/**
-   - frontend/**
+   - vue3-awesome-cv-template/**
 
 env:
   AWS_REGION: "us-east-1"
@@ -26,11 +26,18 @@ jobs:
    defaults:
      run:
        shell: bash
-       working-directory: ./frontend
+       working-directory: ./vue3-awesome-cv-template
 
    steps:
      - name: Checkout the repository to the runner
        uses: actions/checkout@v4
+       with:
+        submodules: 'recursive'
+
+     - name: Debug
+       run: |
+          pwd
+          ls -la
 
      - name: Install Node.js
        uses: actions/setup-node@v4
@@ -46,7 +53,7 @@ jobs:
        uses: actions/upload-artifact@v4
        with:
          name: dist
-         path: ./frontend/dist
+         path: ./vue3-awesome-cv-template/dist
          if-no-files-found: error
 
  terraform:
@@ -84,13 +91,12 @@ jobs:
         name: dist
         path: infra/html-files
 
-    - name: debug
+    - name: Debug
       run: |
         pwd
-        ls
-        tree -L 1
         cd html-files/assets
-        ls
+        pwd
+        ls -la
         for file in *; do
           file "$file"
         done
