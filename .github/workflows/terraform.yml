@@ -2,16 +2,8 @@ name: "Terraform Infrastructure"
 
 on:
   push:
-    #  branches:
-    #  - main
-    #  paths:
-    #  - infra/**
-    #  - vue3-awesome-cv-template/**
     branches: [main]
   pull_request:
-    # paths:
-    #   - infra/**
-    #   - vue3-awesome-cv-template/**
     branches: [main]
 
 env:
